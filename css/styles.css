@@ -74,6 +74,10 @@ a {
     top: 0;
     z-index: 1030;
 }
+.navbar-nav {
+    background-color: rgb(114, 109, 109);
+    
+}   
 
 .navbar-scrolled {
     background-color: var(--dark-color) !important;
