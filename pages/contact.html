@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - ZafaUrbanFix Barcelona</title>
+    <meta name="description" content="Contacta con ZafaUrbanFix para presupuestos de derribos, demoliciones, reformas y pintura en Barcelona. Más de 15 años de experiencia.">
+    <meta name="keywords" content="contacto ZafaUrbanFix, presupuesto derribos Barcelona, reformas Barcelona, demoliciones Barcelona">
+    <meta name="author" content="ZafaUrbanFix">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contacto - ZafaUrbanFix",
+      "description": "Página de contacto de ZafaUrbanFix",
+      "url": "https://www.zafaurbanfix.com/contact.html",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "ZafaUrbanFix",
+        "telephone": "+34-633-422-779",
+        "email": "info@zafaurbanfix.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Carrer de Muntadas, bajos 4",
+          "addressLocality": "Barcelona",
+          "postalCode": "08014",
+          "addressCountry": "ES"
+        }
+      }
+    }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+   
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/+34633422779" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <span class="company-logo">
+                    <i class="fas fa-hard-hat" aria-hidden="true"></i>
+                    <span class="company-name">ZafaUrbanFix</span>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/demoliciones.html">Derribos y Demoliciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/limpieza.html">Limpieza Especial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/vaciados.html">Vaciados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/reformas.html">Reformas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/pintura.html">Pintura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cta-nav" href="../pages/contact.html">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background hero-background-contact"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title">Contacta con Nosotros</h1>
+                    <p class="hero-subtitle">Solicita tu presupuesto sin compromiso para cualquier servicio de derribos, demoliciones, reformas o pintura</p>
+                    <div class="hero-buttons mt-4">
+                        <a href="#contact-form" class="btn btn-primary btn-lg cta-button me-3">
+                            <span>Solicitar Presupuesto</span>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a href="#contact-info" class="btn btn-outline-light btn-lg">
+                            <span>Información de Contacto</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form" class="contact-form-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Solicita tu Presupuesto</h2>
+                    <p class="section-subtitle">Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Success/Error Messages -->
+                    <?php if (isset($_GET['status'])): ?>
+                        <div class="alert alert-<?php echo $_GET['status'] === 'success' ? 'success' : 'danger'; ?> alert-dismissible fade show" role="alert">
+                            <?php 
+                            if ($_GET['status'] === 'success') {
+                                echo '<i class="fas fa-check-circle me-2"></i>¡Mensaje enviado con éxito! Te contactaremos en menos de 24 horas.';
+                            } else {
+                                echo '<i class="fas fa-exclamation-triangle me-2"></i>Error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos por teléfono.';
+                            }
+                            ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif; ?>
+
+                    <form id="contactForm" action="send_email.php" method="POST" class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre completo" required>
+                                    <label for="name">Nombre completo *</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrónico" required>
+                                    <label for="email">Correo electrónico *</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Teléfono">
+                                    <label for="phone">Teléfono</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="service" name="service" required>
+                                        <option value="" selected disabled>Selecciona un servicio</option>
+                                        <option value="demoliciones">Derribos y Demoliciones</option>
+                                        <option value="limpieza">Limpieza Especial</option>
+                                        <option value="vaciados">Vaciados</option>
+                                        <option value="reformas">Reformas</option>
+                                        <option value="pintura">Pintura</option>
+                                        <option value="otros">Otros servicios</option>
+                                    </select>
+                                    <label for="service">Servicio de interés *</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Ubicación del proyecto">
+                                <label for="location">Ubicación del proyecto</label>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="message" name="message" placeholder="Describe tu proyecto" style="height: 150px" required></textarea>
+                                <label for="message">Describe tu proyecto o necesidades *</label>
+                            </div>
+                        </div>
+                        <!-- Honeypot field for spam protection -->
+                        <div style="display: none;">
+                            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="privacy" name="privacy" required>
+                            <label class="form-check-label" for="privacy">
+                                Acepto la <a href="politica-privacidad.html" class="text-primary">Política de Privacidad</a> y el tratamiento de mis datos *
+                            </label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg cta-button">
+                                <span>Enviar Solicitud</span>
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section id="contact-info" class="contact-info-section py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Información de Contacto</h2>
+                    <p class="section-subtitle">Múltiples formas de contactar con nosotros</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-method text-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Dirección</h3>
+                        <p>Carrer de Muntadas, bajos 4<br>Distrito de Sants-Montjuïc<br>08014 Barcelona</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-method text-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Teléfono</h3>
+                        <p><a href="tel:+34633422779">+34 633 42 27 79</a></p>
+                        <p class="small">Lunes-Viernes: 8:00-20:00</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="contact-method text-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@zafaurbanfix.com">info@zafaurbanfix.com</a></p>
+                        <p class="small">Respondemos en menos de 24h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.373231976429!2d2.136684776333888!3d41.37656997131581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a498d64bd023fd%3A0x26089fc39cb352a3!2sCarrer%20de%20Muntadas%2C%204%2C%20Sants-Montju%C3%AFc%2C%2008014%20Barcelona!5e0!3m2!1ses!2ses!4v1690900000000!5m2!1ses!2ses" 
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Preguntas Frecuentes</h2>
+                    <p class="section-subtitle">Resolvemos tus dudas más comunes</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    ¿En qué zonas de Barcelona trabajan?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Trabajamos en toda Barcelona y provincia. Ofrecemos nuestros servicios en todos los distritos de Barcelona y municipios del área metropolitana.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    ¿Cuánto tiempo tardan en dar un presupuesto?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Normalmente proporcionamos un presupuesto inicial en menos de 24 horas. Para proyectos más complejos que requieren una visita in situ, coordinamos una cita en un plazo de 48-72 horas.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    ¿Ofrecen garantía en sus trabajos?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sí, todos nuestros trabajos cuentan con garantía. La duración de la garantía varía según el tipo de servicio, pero siempre ofrecemos un mínimo de 1 año para la mayoría de nuestros trabajos.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    ¿Realizan la gestión de residuos y permisos?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Sí, nos encargamos de toda la gestión necesaria, incluyendo permisos municipales, gestión de residuos y documentación requerida para cada tipo de trabajo.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2>¿Tienes un proyecto en mente?</h2>
+                    <p class="lead">No dudes en contactarnos. Estaremos encantados de asesorarte y ofrecerte la mejor solución para tus necesidades.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                    <a href="#contact-form" class="btn btn-light btn-lg cta-button">
+                        <span>Contactar Ahora</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <i class="fas fa-hard-hat" aria-hidden="true"></i>
+                        <span class="company-name">ZafaUrbanFix</span>
+                    </div>
+                    <p>Empresa líder en servicios de derribos, demoliciones, reformas y pintura con más de 15 años de experiencia en el sector.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Enlaces</h5>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="about.html">Nosotros</a></li>
+                        <li><a href="contact.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Servicios</h5>
+                    <ul>
+                        <li><a href="demoliciones.html">Derribos y Demoliciones</a></li>
+                        <li><a href="limpieza.html">Limpieza Especial</a></li>
+                        <li><a href="vaciados.html">Vaciados</a></li>
+                        <li><a href="reformas.html">Reformas</a></li>
+                        <li><a href="pintura.html">Pintura</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contacto</h5>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <span>Carrer de Muntadas, bajos 4, Distrito de Sants-Montjuïc, 08014 Barcelona</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                            <span>+34 633 42 27 79</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span>info@zafaurbanfix.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <span>Lunes-Viernes: 8:00-20:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 ZafaUrbanFix. Todos los derechos reservados.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                         <a href="politica-privacidad.html">Política de Privacidad</a>
+                        <a href="terminos-condiciones.html">Términos y Condiciones</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/script.js"></script>
+   
+</body>
+</html>
