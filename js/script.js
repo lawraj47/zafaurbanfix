@@ -110,30 +110,18 @@ function debounce(func, wait, immediate) {
     };
 }
 
-// Responsive navigation toggle for mobile
-function initMobileMenu() {
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const navbarNav = document.querySelector('#navbarNav');
-    
-    if (navbarToggler && navbarNav) {
-        navbarToggler.addEventListener('click', function() {
-            navbarNav.classList.toggle('show');
-        });
-        
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navbarNav.classList.contains('show')) {
-                    navbarToggler.click();
-                }
-            });
-        });
-    }
-}
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', initMobileMenu);
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+      if (bsCollapse) bsCollapse.hide();
+    });
+  });
+});
 
 
 // Contact form handling
